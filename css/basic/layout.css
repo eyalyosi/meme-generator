@@ -1,0 +1,15 @@
+.main-header {
+    height: 10vh;
+}
+.main-layout {
+    max-width: 90vw;
+    margin: 0 auto;
+}
+
+.main-content{
+    height: 70vh;
+}
+
+footer {
+    height: 18vh;
+}

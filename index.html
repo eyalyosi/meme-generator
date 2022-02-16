@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme generator</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body onload="init()">
+    <header class="main-header">
+        <div class="main-layout">
+            <div class="logo">meme generator (logo)</div>
+            <nav class="main-nav-container">
+                <ul class="main-nav clean-list">
+                    <li><a href="#">gallery</a></li>
+                    <li><a href="#">meme editor</a></li>
+                    <li><a href="#">my memes</a></li>
+                    <li><a href="#">about</a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </header>
+    <main class="main-content main-layout">
+        <div class="search-container ">
+            <input type="text" placeholder="search meme">
+            <div class="search-text">funny, animel, happy...</div>
+        </div>
+
+        <div class="meme-gallery">
+        </div>
+    </main>
+
+    <div class="meme-editor main-layout">
+        <div class="canves-container ">
+            <canvas class="canvas-box" id="canvas" height="500" width="500"></canvas>
+        </div>
+        <section class="control-box">
+            <div class="line-div">
+                <input type="text" name="line1-text" id="line1-text" placeholder="enter text"
+                    onchange="onTypeText(this.value)">
+                <button>delete</button>
+                <button>select text</button>
+                <button onclick="onAddText()">add text</button>
+            </div>
+            <div class="text-definition">
+                <button onclick="onEnlargeText()">+ text</button>
+                <button onclick="onDecreaseText()">- text</button>
+                <button>align left</button>
+                <button>align center</button>
+                <button>align right</button>
+                <select value="" onchange="onSetfont(this.value)">
+                    <option value="impact" name="impact" id="impact">Impact</option>
+                </select>
+                <input type="color" name="color-fill" onchange="onFillColor(this.value)">
+            </div>
+            <div class="emoji-container">
+                <div>😀</div>
+                <div>🥳</div>
+                <div>😡</div>
+                <div>🤮</div>
+            </div>
+            <div class="meme-file">
+                <button>download</button>
+                <button>save</button>
+                <button>share</button>
+            </div>
+        </section>
+    </div>
+    <div class="my-memes" hidden>
+    </div>
+    <footer>
+        <h3>the meme generator footer</h3>
+    </footer>
+    <script src="/js/main-controller.js"></script>
+    <script src="/js/meme-editor-controller.js"></script>
+    <script src="/js/service/meme-editor-service.js"></script>
+    <script src="/js/service/main-servics.js"></script>
+    <script src="/js/service/utils.js"></script>
+    <script src="/js/service/storage-service.js"></script>
+    <script src="/js/service/upload-service.js"></script>
+</body>
+
+</html>

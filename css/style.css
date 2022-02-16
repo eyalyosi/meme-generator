@@ -1,0 +1,18 @@
+/* SETUP  */
+
+@import 'setup/vars.css';
+@import 'setup/typography.css';
+
+/* BASE */
+
+@import 'basic/base.css';
+@import 'basic/layout.css';
+
+/* COMPONENTS */
+@import 'components/main-header.css';
+@import 'components/img-gallery.css';
+@import 'components/footer.css';
+@import 'components/meme-editor.css';
+
+
+@import 'basic/media-query.css'

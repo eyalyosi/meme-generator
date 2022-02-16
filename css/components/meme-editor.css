@@ -1,0 +1,13 @@
+
+
+.canvas-box {
+    border: 2px solid black;
+    margin: 0 auto;
+    display: block;
+    background-color: white;
+
+}
+
+.control-box{
+    border: 1px solid black;
+}

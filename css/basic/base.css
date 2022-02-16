@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: var(--clr1);
+}
+
+body {
+  margin: 0;
+}
+
+.meme-editor {
+  display: none;
+  justify-content: center;
+  gap: 10px;
+}
+
+img {
+  width: 100%;
+}
+
+.show {
+  display: flex;
+}
+
+.hide {
+  display: none;
+}
+
