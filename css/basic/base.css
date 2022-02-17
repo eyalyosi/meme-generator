@@ -10,12 +10,6 @@ body {
   margin: 0;
 }
 
-.meme-editor {
-  display: none;
-  justify-content: center;
-  gap: 10px;
-}
-
 img {
   width: 100%;
 }
@@ -28,3 +22,23 @@ img {
   display: none;
 }
 
+.btn-menu {
+  display: none;
+  height: 40px;
+  width: 40px;
+  background-color: var(--clr3);
+  border-radius: 5px;
+  border: none;
+}
+.btn-menu:hover {
+  cursor: pointer;
+
+}
+
+.close-nav-btn {
+  display: none;
+}
+
+.menu-open {
+  display: block;
+}

@@ -1,45 +1,65 @@
 'use strict'
-
 var gMeme = {
     selectedImgId: '',
     selectedLineIdx: 0,
 
     lines: [
         {
+            xPos: 100,
+            yPos: 80,
             txt: '',
             size: 70,
             aling: 'left',
-            color: gFillColor,
-        },
-        {
-            txt: '',
-            size: 70,
-            aling: 'left',
-            color: gFillColor,
+            color: 'white',
+            font: 'Impact',
         }
     ]
-}
-
-function updateGMemeImgId(img) {
-    gMeme.selectedImgId = img.id
 }
 
 function getGMeme() {
     return gMeme
 }
 
+function updateGMemeImgId(img) {
+    gMeme.selectedImgId = img.id
+}
+
 function updateGMemeText(text) {
-    gMeme.lines[0].txt = text
+    if (!gMeme.lines[gMeme.selectedLineIdx]) {
+        if (gMeme.selectedLineIdx === 1) {
+            gMeme.lines[gMeme.selectedLineIdx] = {
+                xPos: 100,
+                yPos: gCanvas.width - 80,
+                txt: '',
+                size: 70,
+                aling: 'left',
+                color: 'white',
+                font: 'Impact',
+            }
+        } else {
+            gMeme.lines[gMeme.selectedLineIdx] = {
+                xPos: 100,
+                yPos: gCanvas.width / 2,
+                txt: '',
+                size: 70,
+                aling: 'left',
+                color: 'white',
+                font: 'Impact',
+            }
+        }
+    }
+    else {
+        gMeme.lines[gMeme.selectedLineIdx].txt = text
+    }
 }
 
 function updateGMemeLineColor(color) {
-    gMeme.lines[0].color = color
+    gMeme.lines[gMeme.selectedLineIdx].color = color
 }
 
-
-function drawText(text, x, y, color, textSize) {
+function drawText(text, x = 100, y = 80, color = 'white', textSize = 70, font = 'Impact') {
     gCtx.lineWidth = 3;
-    gCtx.strokeStyle = color;
+    gCtx.strokeStyle = 'black';
     gCtx.fillStyle = color;
     gCtx.font = `${textSize}px Impact`;
     gCtx.fillText(text, x, y);
@@ -47,16 +67,21 @@ function drawText(text, x, y, color, textSize) {
 }
 
 function enlargeText() {
-    gMeme.lines[0].size++
+    gMeme.lines[gMeme.selectedLineIdx].size++
 }
 
 function decreaseText() {
-    gMeme.lines[0].size--
+    gMeme.lines[gMeme.selectedLineIdx].size--
+}
+
+function addListeners() {
+    // addMouseListeners()
+    // addTouchListeners()
+    window.addEventListener('resize', () => {
+        resizeCanvas()
+        // renderCanvas()
+    })
 }
 
 
-// function getImgById(imgId) {
-//     const img = gImgs.find(img => imgId === img.id)
-//     return img
-// }
 

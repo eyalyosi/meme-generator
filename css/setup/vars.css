@@ -1,14 +1,17 @@
 :root {
-    --clr1: #FFF9B6;
-    --clr2: #CEE5D0;
+    --clr1: #CAB8FF;
+    --clr2: #B5DEFF;
+    --clr3: #F3ED9E;
+    --clr4: #C1FFD7;
+    --clr5: #rgb(165, 132, 132)
 }
 
 
 /* 
 clr1: html bg color
 clr2: header bg color
-
-
+clr3: header logo folor/ search bg color
+clr4: 
 */
 
 

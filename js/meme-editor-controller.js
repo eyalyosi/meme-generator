@@ -3,9 +3,8 @@
 var gCanvas;
 var gCtx;
 var gImg
-var gFillColor = 'white'
-var gXpos = 30
-var gYpos = 100
+var gCurrLineIdx
+const STORAGE_KEY = 'memeDB'
 
 function startCanvas() {
     gCanvas = document.getElementById('canvas');
@@ -15,7 +14,7 @@ function startCanvas() {
 function onImgClick(img) {
     gImg = img
     document.querySelector('.main-content').classList.add('hide')
-    document.querySelector('.meme-editor').classList.add('show')
+    document.querySelector('.meme-editor').classList.remove('hide')
     updateGMemeImgId(img)
     renderMeme()
 }
@@ -23,23 +22,25 @@ function onImgClick(img) {
 function renderMeme() {
     const meme = getGMeme()
     gCtx.drawImage(gImg, 0, 0, gCanvas.width, gCanvas.height);
-    drawText(meme.lines[0].txt, gXpos, gYpos, gFillColor, meme.lines[0].size)
+    meme.lines.forEach((line) => {
+        drawText(line.txt, line.xPos, line.yPos, line.color, line.size)
+    })
 }
 
-function onAddText(text) {
-    if (!text) return
+function onAddText() {
+    gMeme.selectedLineIdx++
+    document.getElementById('line-text').value = ''
     renderMeme()
-    gYpos += 320
 }
 
 function onTypeText(text) {
     updateGMemeText(text)
-    onAddText(text)
+    renderMeme()
 }
 
 function onFillColor(color) {
-    gFillColor = color
-    updateGMemeLineColor(gFillColor)
+    updateGMemeLineColor(color)
+    renderMeme()
 }
 
 function onEnlargeText() {
@@ -52,7 +53,38 @@ function onDecreaseText() {
     renderMeme()
 }
 
+function onSelectedText() {
+    if (gMeme.lines.length === 0) return
+    gMeme.selectedLineIdx++
+    if (gMeme.selectedLineIdx >= gMeme.lines.length) {
+        gMeme.selectedLineIdx = 0
+    }
+}
+
+
+function onDeleteText() {
+}
 
 function onSetfont(font) {
 
+}
+
+function onSave() {
+    saveToStorage(STORAGE_KEY, gMeme)
+}
+
+function resizeCanvas() {
+    var elContainer = document.querySelector('.canvas-container');
+    // Note: changing the canvas dimension this way clears the canvas
+    // gCanvas.width = elContainer.offsetWidth - 50
+    // Unless needed, better keep height fixed.
+    // gCanvas.height = elContainer.offsetHeight
+}
+
+function onImgInput(event) {
+
+}
+
+function clearCanvas() {
+    gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
 }

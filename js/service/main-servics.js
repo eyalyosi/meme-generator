@@ -25,7 +25,3 @@ var gImgs = [
 function getImages() {
     return gImgs
 }
-
-function getImagesById(id) {
-
-}

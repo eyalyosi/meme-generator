@@ -1,0 +1,29 @@
+/* MEDIUM */
+@media (max-width: 1160px) {
+    .main-nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        flex-direction: column;
+        background-color: var(--clr6);
+        height: 70vh;
+        transform: translateX(100%);
+        transition: transform 0.3s, box-shadow 0.3s;
+        background-color: var(--clr2);
+        border-radius: 10px;
+      }
+
+      .close-nav-btn {
+        display: block;
+      }
+      .btn-menu {
+        display: block;
+      }
+      body.menu-open .main-nav {
+        transform: translateX(0);
+        transition: transform 0.6s;
+        box-shadow: -5px 0px 8px;
+      }
+
+
+}
