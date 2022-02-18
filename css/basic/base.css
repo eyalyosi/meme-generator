@@ -22,6 +22,21 @@ img {
   display: none;
 }
 
+a {
+  text-decoration: none;
+}
+
+a:focus {
+  color: black;
+}
+a::after{
+  color:black
+}
+a:visited {
+  color: black;
+}
+
+
 .btn-menu {
   display: none;
   height: 40px;

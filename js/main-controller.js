@@ -36,6 +36,7 @@ function onMyMemes() {
     document.querySelector('.main-content').classList.add('hide')
     document.querySelector('.meme-editor').classList.add('hide')
     clearCanvas()
+    renderMyMeme()
 }
 
 function onOpenMenu() {
@@ -45,3 +46,44 @@ function onOpenMenu() {
 function onCloseNav() {
     document.body.classList.toggle('menu-open')
 }
+
+function downloadImg(elLink) {
+    gCtx.fillStyle = 'white'
+    var imgContent = gCanvas.toDataURL('image/jpeg')
+    elLink.href = imgContent
+}
+
+function onSearchMeme(text) {
+
+    console.log('hi');
+}
+
+
+
+
+
+function onSurpriseMe() {
+
+    var randomImgId = getRandomInt(1, 18)
+    onMemeEditor()
+    var img = getImgById(randomImgId)
+    console.log(img);
+    // var currImg = Document.getImgById('')
+    // console.log(currImg);
+    // gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
+
+    var randomSentenceId = getRandomInt(0, 14)
+    var randomSentence = memesSentences[randomSentenceId]
+    var randomTextSize = getRandomInt(20, 40)
+    var randomColor = getRandomColor()
+
+    var randomNumberLine = getRandomInt(1, 2)
+    if (randomNumberLine === 1) {
+        drawText(randomSentence, 20, 80, randomColor, randomTextSize)
+
+    } else {
+        drawText(randomSentence, 20, 80, randomColor, randomTextSize)
+        drawText(randomSentence, 20, gCanvas.width - 80, randomColor, randomTextSize)
+    }
+}
+

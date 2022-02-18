@@ -28,68 +28,86 @@
     </header>
     <main class="main-content main-layout">
         <div class="search-container">
-            <input type="text" placeholder="Search Meme" class="search-meme">
-            <div class="search-text">animel   happy   baby   politics</div>
+            <button onclick="onSurpriseMe()" class="bts-surprise">Surprise me!</button>
+            <input type="text" placeholder="Search Meme" class="search-meme" oninput="onSearchMeme(this.value)">
+            <div class="search-text">animel happy baby politics</div>
         </div>
 
         <div class="meme-gallery">
         </div>
     </main>
-
-    <div class="meme-editor main-layout ">
-        <div class="canves-container ">
-            <canvas class="canvas-box" id="canvas" height="500" width="500"></canvas>
+    <section class="meme-editor-container">
+        <div class="meme-editor main-layout ">
+            <div class="canves-container ">
+                <canvas class="canvas-box" id="canvas" height="500" width="500"></canvas>
+            </div>
+            <section class="control-box">
+                <div class="line-div">
+                    <input class="input-meme-text" type="text" name="line-text" id="line-text" placeholder="Enter text"
+                        oninput="onTypeText(this.value)">
+                    <button onclick="onDeleteText()" class="btn-top"><img src="/png/008-trash.png" alt=""></button>
+                    <button onclick="onSelectedText()" class="btn-top"><img src="/png/001-circle.png" alt=""></button>
+                    <button onclick="onAddText()" class="btn-top"><img src="/png/002-add.png" alt=""></button>
+                </div>
+                <div class="text-definition">
+                    <button class="btn-text" onclick="onEnlargeText()"><img src="/png/003-a-plus.png" alt=""></button>
+                    <button class="btn-text" onclick="onDecreaseText()"><img src="/png/007-a-minus-test-symbol.png"
+                            alt=""></button>
+                    <button onclick="onAlignLeft()" class="btn-text"><img src="/png/004-align.png" alt=""></button>
+                    <button onclick="onAlignCenter()" class="btn-text"><img src="/png/005-center.png" alt=""></button>
+                    <button onclick="onAlignRight()" class="btn-text"><img src="/png/006-align-1.png" alt=""></button>
+                    <select value="" onchange="onSetfont(this.value)">
+                        <option value="Impact" name="Impact" id="Impact">Impact</option>
+                        <option value="akaya" name="akaya" id="akaya">Akaya</option>
+                        <option value="Bebas" name="Bebas" id="Bebas">Bebas</option>
+                        <option value="Ferdoka" name="Ferdoka" id="Ferdoka">Ferdoka</option>
+                        <option value="Lobster" name="Lobster" id="Lobster">Lobster</option>
+                        <option value="Roboto" name="Roboto" id="Roboto">Roboto</option>
+                        <option value="Fantasy" name="Fantasy" id="Fantasy">Fantasy</option>
+                    </select>
+                    <input type="color" name="color-fill" onchange="onFillColor(this.value)">
+                </div>
+                <div class="emoji-container">
+                    <div class="emoji">😀</div>
+                    <div class="emoji">🥳</div>
+                    <div class="emoji">😡</div>
+                    <div class="emoji">🤮</div>
+                    <div class="emoji">👽</div>
+                    <div class="emoji">👄</div>
+                    <div class="emoji">👓</div>
+                    <div class="emoji">👑</div>
+                </div>
+                <div class="meme-file-btn">
+                    <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)"
+                        class="meme-file-btn" />
+                    <!-- <button onclick="onImgInput(event)" class="meme-file-btn"> Upload</button> -->
+                    <button class="meme-file-btn"><a href="#" class="btn meme-file-btn" onclick="downloadImg(this)"
+                            download="my-img.jpg">Download</a></button>
+                    <button onclick="onSave()" class="meme-file-btn">Save</button>
+                    <button class="share-facebook meme-file-btn" onclick="uploadImg()">Share</button>
+                </div>
+            </section>
         </div>
-        <section class="control-box">
-            <div class="line-div">
-                <input  class="input-meme-text" type="text" name="line-text" id="line-text" placeholder="Enter text"
-                    oninput="onTypeText(this.value)">
-                <button onclick="onDeleteText()" class="btn-top"><img src="/png/008-trash.png" alt=""></button>
-                <button onclick="onSelectedText()" class="btn-top"><img src="/png/001-circle.png" alt=""></button>
-                <button onclick="onAddText()" class="btn-top"><img src="/png/002-add.png" alt=""></button>
-            </div>
-            <div class="text-definition">
-                <button class="btn-text" onclick="onEnlargeText()"><img src="/png/003-a-plus.png" alt=""></button>
-                <button class="btn-text" onclick="onDecreaseText()"><img src="/png/007-a-minus-test-symbol.png" alt=""></button>
-                <button class="btn-text"><img src="/png/004-align.png" alt="" ></button>
-                <button class="btn-text"><img src="/png/005-center.png" alt=""></button>
-                <button class="btn-text"><img src="/png/006-align-1.png" alt=""></button>
-                <select value="" onchange="onSetfont(this.value)">
-                    <option value="impact" name="impact" id="impact">Impact</option>
-                </select>
-                <input type="color" name="color-fill" onchange="onFillColor(this.value)">
-            </div>
-            <div class="emoji-container">
-                <div class="emoji">😀</div>
-                <div class="emoji">🥳</div>
-                <div class="emoji">😡</div>
-                <div class="emoji">🤮</div>
-                <div class="emoji">👽</div>
-                <div class="emoji">👄</div>
-                <div class="emoji">👓</div>
-                <div class="emoji">👑</div>
-            </div>
-            <div class="meme-file-btn">
-                <button onclick="onImgInput(event)" class="meme-file-btn">Upload</button>
-                <button class="meme-file-btn">Download</button>
-                <button onclick="onSave()" class="meme-file-btn">Save</button>
-                <button class="share-facebook meme-file-btn" onclick="uploadImg()">Share</button>
-            </div>
-        </section>
-    </div>
-    <div class="my-memes" hidden>
-    </div>
+    </section>
+    <!-- <section class="my-memes-container">
+        <div class="my-memes" hidden>
+        </div>
+    </section> -->
+
     <!-- <footer>
         <h3>the meme generator footer</h3>
     </footer> -->
 
 
     <script src="/js/main-controller.js"></script>
+    <script src="/js/service/utils.js"></script>
     <script src="/js/meme-editor-controller.js"></script>
     <script src="/js/service/meme-editor-service.js"></script>
     <script src="/js/service/main-servics.js"></script>
     <script src="/js/service/storage-service.js"></script>
     <script src="/js/service/upload-service.js"></script>
+    <script src="/js/service/upload-to-canvav-service.js"></script>
+    <script src="/js/my-meme-controller.js"></script>
 </body>
 
 </html>
