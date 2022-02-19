@@ -13,7 +13,6 @@ function startCanvas() {
 
 function onImgClick(img) {
     gImg = img
-    console.log(img);
     document.querySelector('.main-content').classList.add('hide')
     document.querySelector('.meme-editor').classList.remove('hide')
     updateGMemeImgId(img)
@@ -55,6 +54,7 @@ function onDecreaseText() {
 }
 
 function onSelectedText() {
+    //TODO fix text size
     if (gMeme.lines.length === 0) return
     gMeme.selectedLineIdx++
     if (gMeme.selectedLineIdx >= gMeme.lines.length) {
@@ -68,12 +68,23 @@ function onDeleteText() {
 }
 
 function onSetfont(font) {
+    //fix select font
     updategMemeFont(font)
     renderMeme()
 }
 
 function onSave() {
-    saveToStorage(STORAGE_KEY, gMeme)
+    var memes = loadFromStorage(STORAGE_KEY)
+    if (!memes) {
+        memes = []
+    }
+    var imgContent = gCanvas.toDataURL('image/jpeg')
+    memes.push(imgContent)
+
+    saveToStorage(STORAGE_KEY, memes)
+
+
+    //TODO save gMeme to gMemes array
 }
 
 function resizeCanvas() {
@@ -88,8 +99,10 @@ function clearCanvas() {
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
 }
 
-function onImgInput(ev) {
+function onUpload(ev) {
+    //fix button
     loadImageFromInput(ev, renderImg)
+
 }
 
 function onAlignLeft() {
@@ -97,12 +110,14 @@ function onAlignLeft() {
     renderMeme()
 }
 
-function onAlignCenter(){
+function onAlignCenter() {
+    //TODO fix deleted line
     updateGMemeTextCenter()
     renderMeme()
 }
 
-function onAlignRight(){
+function onAlignRight() {
+    //TODO fix align right
     updateGMemeTextRight()
     renderMeme()
 }

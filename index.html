@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meme generator</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body onload="init()">
@@ -29,8 +29,25 @@
     <main class="main-content main-layout">
         <div class="search-container">
             <button onclick="onSurpriseMe()" class="bts-surprise">Surprise me!</button>
-            <input type="text" placeholder="Search Meme" class="search-meme" oninput="onSearchMeme(this.value)">
-            <div class="search-text">animel happy baby politics</div>
+            <input type="text" class="search-meme" list="search-meme" id="search-meme-choice" name="search-meme-choice"
+                placeholder="Search Meme" onchange="onSearchMeme(this.value)" />
+            <datalist id="search-meme">
+                <option value="Funny">
+                <option value="Politics">
+                <option value="Animel">
+                <option value="Cute">
+                <option value="Baby">
+                <option value="Cat">
+                <option value="Boy">
+                <option value="Sport">
+                <option value="Matrix">
+                <option value="Game of thrones">
+                <option value="Star trek">
+                <option value="Toys">
+            </datalist>
+
+
+            <!-- <div class="search-text">animel happy baby politics</div> -->
         </div>
 
         <div class="meme-gallery">
@@ -60,14 +77,11 @@
                         <option value="Impact" name="Impact" id="Impact">Impact</option>
                         <option value="akaya" name="akaya" id="akaya">Akaya</option>
                         <option value="Bebas" name="Bebas" id="Bebas">Bebas</option>
-                        <option value="Ferdoka" name="Ferdoka" id="Ferdoka">Ferdoka</option>
                         <option value="Lobster" name="Lobster" id="Lobster">Lobster</option>
-                        <option value="Roboto" name="Roboto" id="Roboto">Roboto</option>
-                        <option value="Fantasy" name="Fantasy" id="Fantasy">Fantasy</option>
                     </select>
                     <input type="color" name="color-fill" onchange="onFillColor(this.value)">
                 </div>
-                <div class="emoji-container">
+                <!-- <div class="emoji-container">
                     <div class="emoji">😀</div>
                     <div class="emoji">🥳</div>
                     <div class="emoji">😡</div>
@@ -76,38 +90,38 @@
                     <div class="emoji">👄</div>
                     <div class="emoji">👓</div>
                     <div class="emoji">👑</div>
-                </div>
+                </div> -->
                 <div class="meme-file-btn">
-                    <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)"
-                        class="meme-file-btn" />
-                    <!-- <button onclick="onImgInput(event)" class="meme-file-btn"> Upload</button> -->
+                    <input type="file" id="selectedFile" style="display: none;" onchange="onUpload(event)" />
+                    <input class="meme-file-btn" type="button" value="Upload"
+                        onclick="document.getElementById('selectedFile').click();" />
                     <button class="meme-file-btn"><a href="#" class="btn meme-file-btn" onclick="downloadImg(this)"
                             download="my-img.jpg">Download</a></button>
                     <button onclick="onSave()" class="meme-file-btn">Save</button>
-                    <button class="share-facebook meme-file-btn" onclick="uploadImg()">Share</button>
+                    <button class="share-facebook meme-file-btn" onclick="onShare()">Share</button>
                 </div>
             </section>
         </div>
     </section>
-    <!-- <section class="my-memes-container">
-        <div class="my-memes" hidden>
+    <section class="my-memes-container">
+        <div class="my-memes">
         </div>
-    </section> -->
+    </section>
 
     <!-- <footer>
         <h3>the meme generator footer</h3>
     </footer> -->
 
 
-    <script src="/js/main-controller.js"></script>
-    <script src="/js/service/utils.js"></script>
-    <script src="/js/meme-editor-controller.js"></script>
-    <script src="/js/service/meme-editor-service.js"></script>
-    <script src="/js/service/main-servics.js"></script>
-    <script src="/js/service/storage-service.js"></script>
-    <script src="/js/service/upload-service.js"></script>
-    <script src="/js/service/upload-to-canvav-service.js"></script>
-    <script src="/js/my-meme-controller.js"></script>
+    <script src="js/service/utils.js"></script>
+    <script src="js/meme-editor-controller.js"></script>
+    <script src="js/service/meme-editor-service.js"></script>
+    <script src="js/service/main-servics.js"></script>
+    <script src="js/service/storage-service.js"></script>
+    <script src="js/service/upload-service.js"></script>
+    <script src="js/service/upload-to-canvav-service.js"></script>
+    <script src="js/my-meme-controller.js"></script>
+    <script src="js/main-controller.js"></script>
 </body>
 
 </html>

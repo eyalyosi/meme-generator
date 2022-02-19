@@ -29,7 +29,7 @@
   background-color: var(--clr3);
   text-align: center;
   font-size: 20px;
-  width: 150px;
+  width: 170px;
 }
 
 .search-text {
@@ -54,4 +54,13 @@
 .bts-surprise:hover {
   cursor: pointer;
   background-color: var(--clr4);
+}
+
+.my-memes-container {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 5px auto;
+  justify-content: center;
+  margin-top: 100px;
 }

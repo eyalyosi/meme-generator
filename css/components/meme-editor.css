@@ -29,6 +29,10 @@
   display: none;
 }
 
+.my-meme-container.hide{
+  display: none;
+}
+
 .emoji-container {
   display: flex;
   flex-direction: row;

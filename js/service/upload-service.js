@@ -1,12 +1,13 @@
 'use strice'
 
-function uploadImg() {
+function onShare() {
+    //TODO fix only one click
     const imgDataUrl = gCanvas.toDataURL("image/jpeg");
 
     // A function to be called if request succeeds
     function onSuccess(uploadedImgUrl) {
         const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
-        console.log(encodedUploadedImgUrl);
+        // console.log(encodedUploadedImgUrl);
         // document.querySelector('.user-msg').innerText = `Your photo is available here: ${uploadedImgUrl}`
 
         document.querySelector('.share-facebook').innerHTML = `
@@ -29,7 +30,7 @@ function doUploadImg(imgDataUrl, onSuccess) {
     })
     .then(res => res.text())
     .then((url)=>{
-        console.log('Got back live url:', url);
+        // console.log('Got back live url:', url);
         onSuccess(url)
     })
     .catch((err) => {

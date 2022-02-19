@@ -1,4 +1,6 @@
 'use strict'
+
+// const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 var gMeme = {
     selectedImgId: '',
     selectedLineIdx: 0,
@@ -79,10 +81,11 @@ function updategMemeFont(font) {
     gMeme.lines[gMeme.selectedLineIdx].font = font
 }
 
-function drawText(text, x = 100, y = 80, color = 'white',strokeStyle = 'black' ,textSize = 70, font = 'Impact') {
+function drawText(text, x = 100, y = 80, color = 'white', textSize = 70, font = 'Impact') {
     gCtx.lineWidth = 3;
-    gCtx.strokeStyle = strokeStyle;
+    gCtx.strokeStyle = 'black';
     gCtx.fillStyle = color;
+    // gCtx.font = `${textSize}px Impact`;
     gCtx.font = `${textSize}px ${font}`;
     gCtx.fillText(text, x, y);
     gCtx.strokeText(text, x, y);
@@ -109,14 +112,75 @@ function updateGMemeTextLeft() {
     gMeme.lines[gMeme.selectedLineIdx].xPos = 10
 }
 function updateGMemeTextCenter() {
-    //TODO fix txt delete
     var textWidth = gCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].txt)
-    console.log(textWidth);
-    gMeme.lines[gMeme.selectedLineIdx].xPos = (gCanvas.width / 2) - (textWidth / 2)
-
+    gMeme.lines[gMeme.selectedLineIdx].xPos = (gCanvas.width / 2) - (textWidth.width / 2)
 }
 function updateGMemeTextRight() {
-    // TODO fix text go out of canvas
-    gMeme.lines[gMeme.selectedLineIdx].xPos = 400
+    var textWidth = gCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].txt)
+    gMeme.lines[gMeme.selectedLineIdx].xPos = (gCanvas.width) - (textWidth.width + 10)
 }
 
+
+
+// touch events drag & drop
+
+// function addListeners() {
+//     addMouseListeners()
+//     addTouchListeners()
+
+// }
+
+// function addMouseListeners() {
+//     gCanvas.addEventListener('mousemove', onMove)
+//     gCanvas.addEventListener('mousedown', onDown)
+//     gCanvas.addEventListener('mouseup', onUp)
+// }
+
+// function addTouchListeners() {
+//     gCanvas.addEventListener('touchmove', onMove)
+//     gCanvas.addEventListener('touchstart', onDown)
+//     gCanvas.addEventListener('touchend', onUp)
+// }
+
+// function onDown(ev) {
+//     const pos = getEvPos(ev)
+//     console.log('onDown()');
+//     // if (!isCircleClicked(pos)) return
+//     // setCircleDrag(true)
+//     gStartPos = pos
+//     document.body.style.cursor = 'grabbing'
+// }
+// function onMove(ev) {
+//     console.log('onMove()');
+//     const circle = getCircle();
+//     if (circle.isDrag) {
+//         const pos = getEvPos(ev)
+//         const dx = pos.x - gStartPos.x
+//         const dy = pos.y - gStartPos.y
+//         moveCircle(dx, dy)
+//         gStartPos = pos
+//         renderCanvas()
+//     }
+// }
+
+// function onUp() {
+//     console.log('onUp()');
+//     setCircleDrag(false)
+//     document.body.style.cursor = 'grab'
+// }
+
+// function getEvPos(ev) {
+//     var pos = {
+//         x: ev.offsetX,
+//         y: ev.offsetY
+//     }
+//     if (gTouchEvs.includes(ev.type)) {
+//         ev.preventDefault()
+//         ev = ev.changedTouches[0]
+//         pos = {
+//             x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+//             y: ev.pageY - ev.target.offsetTop - ev.target.clientTop
+//         }
+//     }
+//     return pos
+// }

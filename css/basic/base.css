@@ -35,7 +35,9 @@ a::after{
 a:visited {
   color: black;
 }
-
+a:active {
+  color: black;
+}
 
 .btn-menu {
   display: none;
